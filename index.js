@@ -4,8 +4,10 @@ class Model {
   }
 
   async getAlbums(artistName) {
+    const proxyURL = "https://cors-anywhere.herokuapp.com/";
     let res = await fetch(
-      `https://itunes.apple.com/search?term=${artistName}&media=music&entity=album&attribute=artistTerm&limit=50`
+      proxyURL +
+        `https://itunes.apple.com/search?term=${artistName}&media=music&entity=album&attribute=artistTerm&limit=50`
     );
     res = await res.json();
     this.albums = res.results;
